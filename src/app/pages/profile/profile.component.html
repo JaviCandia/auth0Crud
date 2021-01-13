@@ -1,0 +1,58 @@
+<div class="container animate__animated animate__fadeIn h-100">
+  <h1 class="display-6 mb-4">Información de usuario</h1>
+
+  <div *ngIf="auth.user$ | async as user">
+
+    <!-- <div class="row mb-4">
+        <img src="https://images.pexels.com/photos/326576/pexels-photo-326576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" class="rounded img-fluid">
+    </div> -->
+
+    <div class="row mb-4">
+      <div class="col-sm-4 mb-4">
+        <div class="card">
+          <div class="d-flex justify-content-center">
+            <img [src]="user.picture" class="img-thumbnail">
+          </div>
+          <div class="card-body">
+            <div class="card-body"></div>
+            <h5 class="card-title">Usuario: {{user.nickname}}</h5>
+            <p class="card-text lead">Cursos a los que te has inscrito:</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngIf="userLocal.costura">Costura</li>
+            <li class="list-group-item" *ngIf="userLocal.bordado">Bordado</li>
+            <li class="list-group-item" *ngIf="userLocal.barro">Barro</li>
+            <li class="list-group-item" *ngIf="userLocal.manualidades">Manualidades</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Información personal</h5>
+            <form>
+              <div class="form-group mb-4">
+                <label class="lead">Dirección de correo</label>
+                <input type="email" class="form-control" placeholder="Enter email" value="{{user.email}}" name="email" disabled>
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="lead">Nombre</label>
+                <input class="form-control" placeholder="Nombre" [(ngModel)]="userLocal.nombre" name="nombre">
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="lead">Apellidos</label>
+                <input class="form-control" placeholder="Apellidos" [(ngModel)]="userLocal.apellidos" name="apellidos">
+              </div>
+
+              <button type="submit" class="btn btn-outline-primary" (click)="crear(user.email)">Crear</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
